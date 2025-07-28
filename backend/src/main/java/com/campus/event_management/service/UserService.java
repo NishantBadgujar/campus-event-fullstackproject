@@ -15,7 +15,8 @@ public class UserService {
     UserRepository repo;
 
     public User createUser(User user){
-        return repo.save(user);
+        repo.save(user);
+        return user;
     }
 
     public List<User> getAllUser(){
@@ -28,7 +29,7 @@ public class UserService {
 
     public String deleteUser(long id){
         repo.deleteById(id);
-        return "User Deleted Successfully.";
+        return "User deleted Successfully.";
     }
 
     public User updateUser(User user, long id){
