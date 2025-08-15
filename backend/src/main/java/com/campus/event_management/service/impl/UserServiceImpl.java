@@ -4,7 +4,7 @@ import com.campus.event_management.entity.User;
 import com.campus.event_management.repository.UserRepository;
 import com.campus.event_management.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,29 +15,28 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserRepository repo;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
-
+//    @Autowired
+//    private PasswordEncoder passwordEncoder;
+//
+//
     @Override
     public User registerUser(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return repo.save(user);
     }
-
-    @Override
-    public User loginUser(String email, String password) {
-        User user = repo.findByEmail(email).orElse(null);
-        if (user != null && passwordEncoder.matches(password, user.getPassword())) {
-            return user;
-        }
-        return null;
-    }
-
-    @Override
-    public User getUserByEmail(String email) {
-        return repo.findByEmail(email).orElse(null);
-    }
+//
+//    @Override
+//    public User loginUser(String email, String password) {
+//        User user = repo.findByEmail(email).orElse(null);
+//        if (user != null && passwordEncoder.matches(password, user.getPassword())) {
+//            return user;
+//        }
+//        return null;
+//    }
+//
+//    @Override
+//    public User getUserByEmail(String email) {
+//        return repo.findByEmail(email).orElse(null);
+//    }
 
     @Override
     public List<User> getAllUser(){
